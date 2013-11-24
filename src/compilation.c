@@ -1,10 +1,13 @@
-#ifndef COMPILATION_H_INCLUDED
-#define COMPILATION_H_INCLUDED
-
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 #include "compilation.h"
+
+void
+exec_GCC(const char * path, CompilationReport * report);
+
+void
+exec_UNDEFINED(CompilationReport * report);
 
 Language
 lang_from_string(const char * c)
@@ -35,12 +38,14 @@ compile_it(const char * inpath, const char * outpath, Language lang)
   return report;
 }
 
-void exec_GCC(const char * path, CompilationReport * report)
+void
+exec_GCC(const char * path, CompilationReport * report)
 {
   //exec for gcc
 }
 
-void exec_UNDEFINED(CompilationReport * report)
+void
+exec_UNDEFINED(CompilationReport * report)
 {
   char c[] = "Undefined language";
   free(report->result.path);
@@ -49,4 +54,3 @@ void exec_UNDEFINED(CompilationReport * report)
   strcpy(report->message, c);
 }
 
-#endif // COMPILATION_H_INCLUDED
