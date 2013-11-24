@@ -3,14 +3,14 @@
 
 #include <stdbool.h>
 
-enum Problem_status {
+typedef enum {
   OK,
   CHECHER_ERROR,
   GENERATOR_ERROR,
   DATA_ERROR,
   CONFIG_ERROR,
   EXISTING_NAME
-};
+} Problem_status;
 
 typedef struct {
   unsigned time;

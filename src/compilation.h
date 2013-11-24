@@ -1,7 +1,7 @@
 #ifndef COMPILATION_H_INCLUDED
 #define COMPILATION_H_INCLUDED
 
-enum Language {UNDEFINED, GCC};
+typedef enum {UNDEFINED, GCC} Language;
 
 typedef struct {
   int id;
