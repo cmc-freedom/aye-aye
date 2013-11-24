@@ -3,8 +3,9 @@
 
 #include "problem.h"
 #include "solution.h"
+#include "compilation.h"
 
-test_it(Solution * sol, problem pr)
-
+void
+test_solution(Solution * sol, problem pr);
 
 #endif // TESTING_H_INCLUDED
