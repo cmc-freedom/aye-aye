@@ -6,6 +6,8 @@
 #include "compilation.h"
 
 void
-test_solution(Solution * sol, problem pr);
+test_solution (Solution *sol, problem pr);
+
+#include "testing.c"
 
 #endif // TESTING_H_INCLUDED

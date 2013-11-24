@@ -3,7 +3,8 @@
 
 #include "compilation.h"
 
-typedef enum {
+typedef enum
+{
   OK,
   COMPILATION_ERROR,
   WRONG_ANSWER,
@@ -14,7 +15,8 @@ typedef enum {
   CRASH,
   SYSTEM_BUG,
   PRESENTATION_ERROR
-} Solution_status;
+}
+SolutionStatus;
 
 typedef struct {
   int id;
@@ -23,6 +25,7 @@ typedef struct {
   char * report;
   unsigned ok_tests;
   unsigned score;
-} Solution;
+}
+Solution;
 
 #endif // SOLUTION_H_INCLUDED

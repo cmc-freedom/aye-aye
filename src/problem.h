@@ -3,51 +3,59 @@
 
 #include <stdbool.h>
 
-typedef enum {
+typedef enum
+{
   OK,
   CHECHER_ERROR,
   GENERATOR_ERROR,
   DATA_ERROR,
   CONFIG_ERROR,
   EXISTING_NAME
-} Problem_status;
+}
+ProblemStatus;
 
-typedef struct {
+typedef struct
+{
   unsigned time;
   unsigned memory;
-} Limits;
+}
+Limits;
 
-typedef struct {
+typedef struct
+{
   int id;
-  char * name;
-  char * checker
-  char * generator;
-  char * data;
-  char * config_path;
+  char *name;
+  char *checker;
+  char *generator;
+  char *data;
+  char *config;
   bool cached;
   Limits limit;
   unsigned tests_count;
-} Problem;
+}
+Problem;
 
-Problem_status
-create_problem(char * config_path, Problem * pr);
+ProblemStatus
+create_problem (char *config, Problem *problem);
 
 void
-delete_problem(char * name);
+delete_problem (char *name);
 
-Problem_status
-reload_problem(char * name);
+ProblemStatus
+reload_problem (char *name);
 
-Problem_status
-replace_problem(char * config_path, Problem * pr);
+ProblemStatus
+replace_problem (char *config_path, Problem *problem);
 
 Problem
-load_problem(char * name);
+load_problem (char *name);
 
 void
-export_problem(char * path);
+export_problem (char *path);
 
-Problem_status
-import_problem(char * path);
+ProblemStatus
+import_problem (char *path);
+
+#include "problem.c"
 
 #endif // PROBLEM_H_INCLUDED

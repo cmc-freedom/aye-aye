@@ -1,25 +1,34 @@
 #ifndef COMPILATION_H_INCLUDED
 #define COMPILATION_H_INCLUDED
 
-typedef enum {UNDEFINED, GCC} Language;
+typedef enum
+{
+  UNDEFINED,
+  GCC
+}
+Language;
 
-typedef struct {
-  int id;
-  char * path;
+typedef struct
+{
+  char *path;
   Language lang;
-} Compiled_program;
+}
+CompiledProgram;
 
-typedef struct {
+typedef struct
+{
   int status;
-  char * message;
-  Compiled_program result;
-} Compilation_report;
+  char *message;
+  CompiledProgram result;
+}
+CompilationReport;
 
-
-Compilation_report
-compile_it(const char * inpath, const char * outpath, Language lang);
+CompilationReport
+compile_it (const char *inpath, const char *outpath, Language language);
 
 Language
-lang_from_string(const char * c);
+lang_from_string (const char *string);
+
+#include "compilation.c"
 
 #endif // COMPILATION_H_INCLUDED
