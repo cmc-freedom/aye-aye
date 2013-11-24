@@ -10,12 +10,19 @@ enum Solution_status {
   TIME_LIMIT,
   MEMORY_LIMIT,
   IN_QUEUE,
-  TESTING
+  TESTING,
+  CRASH,
+  SYSTEM_BUG,
+  PRESENTATION_ERROR
 };
 
 typedef struct {
+  int id;
   Compiled_program compiled_program;
   Solution_status status;
+  char * report;
+  unsigned ok_tests;
+  unsigned score;
 } Solution;
 
 #endif // SOLUTION_H_INCLUDED

@@ -4,7 +4,7 @@
 enum Language {UNDEFINED, GCC};
 
 typedef struct {
-  unsigned index;
+  int id;
   char * path;
   Language lang;
 } Compiled_program;
