@@ -47,7 +47,7 @@ exec_GCC(const char * path, CompilationReport * report)
 {
   char name[] = "gcc ", options[] = " -std=gnu99 -o ";
   char errormsg[] = "Compile error", okmsg[] = "Successful compile";
-  char * str = malloc(sizeof(name) + sizeof(path) + sizeof(options) + sizeof(report->result.path));
+  char * str = malloc(sizeof(name) + strlen(path) + sizeof(options) + strlen(report->result.path));
   strcpy(str, name);
   strcat(str, path);
   strcat(str, options);
