@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "compilation.h"
+#include "wide_system.h"
 
 void
 exec_GCC(const char * path, CompilationReport * report);
@@ -19,7 +19,11 @@ lang_from_string(const char * c)
     s[i] = tolower(c[i]);
   s[i] = '\0';
   if (!strcmp(s, "c") || !strcmp(s, "gcc"))
+  {
+    free(s);
     return GCC;
+  }
+  free(s);
   return UNDEFINED;
 }
 
@@ -41,7 +45,25 @@ compile_it(const char * inpath, const char * outpath, Language lang)
 void
 exec_GCC(const char * path, CompilationReport * report)
 {
-  //exec for gcc
+  char name[] = "gcc ", options[] = " -std=gnu99 -o ";
+  char errormsg[] = "Compile error", okmsg[] = "Successful compile";
+  char * str = malloc(sizeof(name) + sizeof(path) + sizeof(options) + sizeof(report->result.path));
+  strcpy(str, name);
+  strcat(str, path);
+  strcat(str, options);
+  strcat(str, report->result.path);
+  report->status = wide_system_system(str);
+  if (report->status)
+  {
+    report->message = malloc(sizeof(errormsg));
+    strcpy(report->message, errormsg);
+  }
+  else
+  {
+    report->message = malloc(sizeof(okmsg));
+    strcpy(report->message, okmsg);
+  }
+  free(str);
 }
 
 void
