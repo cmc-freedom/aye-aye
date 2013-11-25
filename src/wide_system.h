@@ -1,4 +1,4 @@
-#ifndef WIDE_SYSTEM__H
+#ifndef WIDE_SYSTEM_H
 #define WIDE_SYSTEM_H
 
 #include <stdio.h>
