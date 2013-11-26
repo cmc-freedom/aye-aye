@@ -26,6 +26,7 @@ lang_from_string(const char *path)
     free(copy);
     return GCC;
   }
+
   free(copy);
   return UNDEFINED;
 }
