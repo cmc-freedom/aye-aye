@@ -52,9 +52,12 @@ compile_it(const char *inpath, const char *outpath, Language lang)
 void
 exec_GCC(const char *path, CompilationReport *report)
 {
-  char name[] = "gcc ", options[] = " -std=gnu99 -o ";
-  char errormsg[] = "Compile error", okmsg[] = "Successful compile";
-  char no_result[] = "None";
+  const char *name = "gcc ";
+  const char *options = " -std=gnu99 -o ";
+  const char *errormsg = "Compile error";
+  const char *okmsg = "Successful compile";
+  const char *no_result = "None";
+
   char *str = malloc(strlen(name) +
                      strlen(path) +
                      strlen(options) +
@@ -63,28 +66,36 @@ exec_GCC(const char *path, CompilationReport *report)
   strcat(str, path);
   strcat(str, options);
   strcat(str, report->result.path);
+
   report->status = wide_system_system(str);
+
   if (report->status)
-  {
-    report->result.path = malloc(strlen(no_result) + 1);
-    strcpy(report->result.path, no_result);
-    report->message = malloc(strlen(errormsg) + 1);
-    strcpy(report->message, errormsg);
-  }
+    {
+      report->result.path = malloc(strlen(no_result) + 1);
+      strcpy(report->result.path, no_result);
+
+      report->message = malloc(strlen(errormsg) + 1);
+      strcpy(report->message, errormsg);
+    }
   else
-  {
-    report->message = malloc(strlen(okmsg) + 1);
-    strcpy(report->message, okmsg);
-  }
+    {
+      report->message = malloc(strlen(okmsg) + 1);
+      strcpy(report->message, okmsg);
+    }
+
   free(str);
 }
 
 void
 exec_UNDEFINED(CompilationReport *report)
 {
-  char c[] = "Undefined language";
+  const char *c = "Undefined language";
+
   free(report->result.path);
+  report->result.path = NULL;
+
   report->status = -1;
+
   report->message = malloc(strlen(c) + 1);
   strcpy(report->message, c);
 }
