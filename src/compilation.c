@@ -34,14 +34,18 @@ CompilationReport
 compile_it(const char *inpath, const char *outpath, Language lang)
 {
   CompilationReport report;
+
   report.result.path = malloc(strlen(outpath) + 1);
   strcpy(report.result.path, outpath);
+
   report.result.lang = lang;
+
   switch(lang)
   {
     case GCC: exec_GCC(inpath, &report); break;
     default: exec_UNDEFINED(&report);
   }
+
   return report;
 }
 
