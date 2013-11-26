@@ -4,15 +4,15 @@
 #include "wide_system.h"
 
 void
-exec_GCC(const char * path, CompilationReport * report);
+exec_GCC(const char *path, CompilationReport *report);
 
 void
-exec_UNDEFINED(CompilationReport * report);
+exec_UNDEFINED(CompilationReport *report);
 
 Language
-lang_from_string(const char * c)
+lang_from_string(const char *c)
 {
-  char * s;
+  char *s;
   s = malloc(sizeof(c));
   int i;
   for(i = 0; c[i]; ++i)
@@ -28,7 +28,7 @@ lang_from_string(const char * c)
 }
 
 CompilationReport
-compile_it(const char * inpath, const char * outpath, Language lang)
+compile_it(const char *inpath, const char *outpath, Language lang)
 {
   CompilationReport report;
   report.result.path = malloc(sizeof(outpath));
@@ -43,12 +43,12 @@ compile_it(const char * inpath, const char * outpath, Language lang)
 }
 
 void
-exec_GCC(const char * path, CompilationReport * report)
+exec_GCC(const char *path, CompilationReport *report)
 {
   char name[] = "gcc ", options[] = " -std=gnu99 -o ";
   char errormsg[] = "Compile error", okmsg[] = "Successful compile";
   char no_result[] = "None";
-  char * str = malloc(sizeof(name) + strlen(path) + sizeof(options) + strlen(report->result.path));
+  char *str = malloc(sizeof(name) + strlen(path) + sizeof(options) + strlen(report->result.path));
   strcpy(str, name);
   strcat(str, path);
   strcat(str, options);
@@ -70,7 +70,7 @@ exec_GCC(const char * path, CompilationReport * report)
 }
 
 void
-exec_UNDEFINED(CompilationReport * report)
+exec_UNDEFINED(CompilationReport *report)
 {
   char c[] = "Undefined language";
   free(report->result.path);
