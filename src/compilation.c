@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <assert.h>
 #include "wide_system.h"
 
 void
@@ -10,20 +11,22 @@ void
 exec_UNDEFINED(CompilationReport *report);
 
 Language
-lang_from_string(const char *c)
+lang_from_string(const char *path)
 {
-  char *s;
-  s = malloc(strlen(c) + 1);
-  int i;
-  for(i = 0; c[i]; ++i)
-    s[i] = tolower(c[i]);
-  s[i] = '\0';
-  if (!strcmp(s, "c") || !strcmp(s, "gcc"))
+  char *copy = malloc(strlen(path) + 1);
+  assert(copy != NULL);
+
+  size_t i;
+  for(i = 0; copy[i] != 0; ++i)
+    copy[i] = tolower(path[i]);
+  copy[i] = '\0';
+
+  if (!strcmp(copy, "c") || !strcmp(copy, "gcc"))
   {
-    free(s);
+    free(copy);
     return GCC;
   }
-  free(s);
+  free(copy);
   return UNDEFINED;
 }
 
