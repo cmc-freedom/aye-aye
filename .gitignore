@@ -20,3 +20,6 @@
 # vim
 *.sw+
 *~
+
+# Build files
+build

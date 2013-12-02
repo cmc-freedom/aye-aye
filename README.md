@@ -20,3 +20,28 @@ offline test-system
     You should have received a copy of the GNU General Public License
     along with this program. If not, see {http://www.gnu.org/licenses/}.
 
+## Have you pre-builded version? ##
+
+Not yet.
+
+## Okey, how I can build current code? ##
+
+Build project with cmake.
+
+## WAT? ##
+
+If you don't know meaning of these words.
+
+1. Install [git](http://git-scm.com).
+2. Clone repository `git clone https://github.com/cmc-freedom/aye-aye.git`
+3. Install [cmake](http://www.cmake.org)
+4. Install [gcc](http://gcc.gnu.org/)
+5. Install [make](http://www.gnu.org/s/make)
+6. Open project directory.
+7. Run in console:
+
+    mkdir build
+    cd build
+    cmake ../src
+    make
+

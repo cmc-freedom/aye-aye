@@ -29,6 +29,5 @@ compile_it (const char *inpath, const char *outpath, Language language);
 Language
 lang_from_string (const char *string);
 
-#include "compilation.c"
-
 #endif // COMPILATION_H_INCLUDED
+

@@ -1,8 +1,11 @@
+#include "compilation.h"
+
+#include "wide_system.h"
+
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 #include <assert.h>
-#include "wide_system.h"
 
 void
 exec_GCC(const char *path, CompilationReport *report);
